@@ -15,7 +15,8 @@ void setup() {
 
 void loop() {
   #ifdef ARDUQUARIUM_DEBUG_BUILD
-    Serial.println("PH Level: " + String(ph4502c.read_ph_level()));
+    Serial.print("PH Level: ");
+    Serial.println(ph4502c.read_ph_level(), 4);
     Serial.println("Water Temperature: " + String(ph4502c.read_temperature()));
   #endif
 
