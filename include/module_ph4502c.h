@@ -7,6 +7,8 @@ class PH4502C {
     public:
     PH4502C(int _to_pin, int _po_pin): to_pin(_to_pin), po_pin(_po_pin) { }
 
+    void setup();
+
     float read_ph_level();
     float read_temperature();
 

@@ -2,7 +2,7 @@
 
 #include "module_ph4502c.h"
 
-PH4502C ph4502c;
+PH4502C ph4502c(PH4502C_TEMPERATURE_PIN, PH4502C_PH_PIN);
 
 void setup() {
   #ifdef ARDUQUARIUM_DEBUG_BUILD
@@ -10,9 +10,14 @@ void setup() {
     Serial.println("Starting Arduquarium...");
   #endif
 
-  ph4502c = PH4502C(PH4502C_TEMPERATURE_PIN, PH4502C_PH_PIN);
+  ph4502c.setup();
 }
 
 void loop() {
+  #ifdef ARDUQUARIUM_DEBUG_BUILD
+    Serial.println("PH Level: " + String(ph4502c.read_ph_level()));
+    Serial.println("Water Temperature: " + String(ph4502c.read_temperature()));
+  #endif
 
+  delay(1000);
 }
