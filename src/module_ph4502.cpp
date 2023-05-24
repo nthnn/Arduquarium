@@ -22,6 +22,7 @@ float PH4502C::read_ph_level() {
     return reading;
 }
 
+// TODO: Re-calibrate
 float PH4502C::read_temperature() {
     return (float) (analogRead(this->to_pin) * (5.0 / 1023.0));
 }
