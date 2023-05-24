@@ -1,18 +1,18 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "module_ph4502c.h"
+
+PH4502C ph4502c;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  #ifdef ARDUQUARIUM_DEBUG_BUILD
+    Serial.begin(9600);
+    Serial.println("Starting Arduquarium...");
+  #endif
+
+  ph4502c = PH4502C(PH4502C_TEMPERATURE_PIN, PH4502C_PH_PIN);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
