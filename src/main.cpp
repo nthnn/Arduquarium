@@ -3,9 +3,9 @@
 
 #include "module_lm35dz.h"
 #include "module_ph4502c.h"
+#include "module_water_sensor.h"
 
 LiquidCrystal_I2C lcd(0x27, 16, 4);
-PH4502C ph4502c(PH4502C_TEMPERATURE_PIN, PH4502C_PH_PIN);
 
 void setup() {
   #ifdef ARDUQUARIUM_DEBUG_BUILD
@@ -14,22 +14,33 @@ void setup() {
   #endif
 
   pinMode(ARDUQUARIUM_LM35DZ_PIN, INPUT);
-  ph4502c.setup();
+  pinMode(ARDUQUARIUM_PH4502C_PH_PIN, INPUT);
 
   lcd.init();
   lcd.backlight();
 }
 
 void loop() {
+  float ph_level = read_ph4502c(), temp = read_lm35dz();
+  int water_level = read_water_sensor();
+
+  String pad = (water_level <= 99) ? "0" : "";
+  pad += (water_level <= 9 ? "0" : "");
+  pad += (water_level == 0 ? "0" : "");
+
   #ifdef ARDUQUARIUM_DEBUG_BUILD
     Serial.print("PH Level: ");
-    Serial.println(ph4502c.read_ph_level(), 4);
-    Serial.println("Water Temperature: " + String(ph4502c.read_temperature()));
-    Serial.println("Temperature: " + String(read_lm35dz()));
+    Serial.print(ph_level, 4);
+    Serial.print(" - Temperature: ");
+    Serial.print(temp, 4);
+    Serial.print(" - Water Level: ");
+    Serial.println(water_level);
   #endif
 
   lcd.clear();
-  lcd.print("pH: " + String(ph4502c.read_ph_level()));
+  lcd.print("Water lvl: " + pad + String(water_level));
+  lcd.setCursor(0, 1);
+  lcd.print(String(temp) + "C    " + String(ph_level) + "pH");
 
   delay(1000);
 }
