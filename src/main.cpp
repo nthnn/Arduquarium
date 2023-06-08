@@ -51,12 +51,10 @@ void loop() {
     digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, HIGH);
     delay(2000);
 
-    digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, LOW);
-    delay(1000);
-
     while(read_water_sensor() <= ARDUQUARIUM_LOW_LEVEL_WATER)
       goto water_level_check;
   }
+  digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, LOW);
 
   delay(1000);
 }
