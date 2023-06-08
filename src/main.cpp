@@ -17,7 +17,11 @@ void setup() {
   pinMode(ARDUQUARIUM_LM35DZ_PIN, INPUT);
   pinMode(ARDUQUARIUM_PH4502C_PH_PIN, INPUT);
 
+<<<<<<< HEAD
   pinMode(ARDUQUARIUM_WATER_PUMP_IN, OUTPUT);
+=======
+  pinMode(ARDUQAURIUM_WATER_PUMP_IN, OUTPUT);
+>>>>>>> e9fbe8fdf9bad055a0d49e31dcf700291123c0ef
   pinMode(ARDUQUARIUM_WATER_PUMP_OUT, OUTPUT);
 
   lcd.init();
