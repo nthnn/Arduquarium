@@ -46,7 +46,17 @@ void loop() {
   lcd.setCursor(0, 1);
   lcd.print(String(temp) + "C    " + String(ph_level) + "pH");
 
-  if(water_level <= 400)
+  water_level_check:
+  if(water_level <= ARDUQUARIUM_LOW_LEVEL_WATER) {
+    digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, HIGH);
+    delay(2000);
+
+    digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, LOW);
+    delay(1000);
+
+    while(read_water_sensor() <= ARDUQUARIUM_LOW_LEVEL_WATER)
+      goto water_level_check;
+  }
 
   delay(1000);
 }
