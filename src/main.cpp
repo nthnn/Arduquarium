@@ -49,12 +49,23 @@ void loop() {
   water_level_check:
   if(water_level <= ARDUQUARIUM_LOW_LEVEL_WATER) {
     digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, HIGH);
-    delay(2000);
+    delay(1000);
 
     while(read_water_sensor() <= ARDUQUARIUM_LOW_LEVEL_WATER)
       goto water_level_check;
   }
   digitalWrite(ARDUQUARIUM_WATER_PUMP_IN, LOW);
 
-  delay(1000);
+  ph_level_check:
+  if(ph_level < 6.5 || ph_level > 7.5) {
+    digitalWrite(ARDUQUARIUM_WATER_PUMP_OUT, HIGH);
+    delay(1000);
+
+    auto new_ph_val = read_ph4502c();
+    while(new_ph_val < 6.5 || new_ph_val > 7.5)
+      goto ph_level_check;
+  }
+  digitalWrite(ARDUQUARIUM_WATER_PUMP_OUT, LOW);
+
+  delay(800);
 }
