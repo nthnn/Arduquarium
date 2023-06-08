@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 
+#include "module_config.h"
 #include "module_lm35dz.h"
 #include "module_ph4502c.h"
 #include "module_water_sensor.h"
@@ -15,6 +16,9 @@ void setup() {
 
   pinMode(ARDUQUARIUM_LM35DZ_PIN, INPUT);
   pinMode(ARDUQUARIUM_PH4502C_PH_PIN, INPUT);
+
+  pinMode(ARDUQAURIUM_WATER_PUMP_IN, OUTPUT);
+  pinMode(ARDUQUARIUM_WATER_PUMP_OUT, OUTPUT);
 
   lcd.init();
   lcd.backlight();
@@ -41,6 +45,8 @@ void loop() {
   lcd.print("Water lvl: " + pad + String(water_level));
   lcd.setCursor(0, 1);
   lcd.print(String(temp) + "C    " + String(ph_level) + "pH");
+
+  if(water_level <= 400)
 
   delay(1000);
 }
