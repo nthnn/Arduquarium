@@ -1,6 +1,17 @@
 #include <Arduino.h>
 
-#include "module_ph4502c.h"
+#include "arduquarium_config.h"
+#include "arduquarium_sensors.h"
+
+float read_lm35dz() {
+    int ave = 0;
+    for(int i = 0; i < 10; i++) {
+        ave += (analogRead(ARDUQUARIUM_LM35DZ_PIN) * 4.88) / 10;
+        delayMicroseconds(10);
+    }
+
+    return ((float) ave / 10) - 3;
+}
 
 float read_ph4502c() {
     float reading = 0.0f;
@@ -15,4 +26,8 @@ float read_ph4502c() {
     reading = ARDUQUARIUM_PH_LEVEL_PH_CALIBRATION + ((2.5 - reading)) / 0.18;
 
     return reading;
+}
+
+int read_water_sensor() {
+    return analogRead(ARDUQUARIUM_WATER_SENSOR_PIN);
 }
