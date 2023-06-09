@@ -2,6 +2,14 @@
 
 The Arduquarium is an automated aquarium water cycler project built using an Arduino UNO board that provides an automated solution for maintaining optimal water conditions in your aquarium while promoting sustainable water usage. By monitoring the pH level and water level in the aquarium, the system takes actions to ensure a healthy environment for your aquatic pets and simultaneously recycles water for plant nourishment.
 
+## How it works
+
+The Automated Aquarium Water Cycler is an Arduino-based project designed to maintain optimal water conditions in your aquarium while promoting sustainable water usage and supporting plant growth. By continuously monitoring the pH level of the aquarium water, the system automatically pumps out water if the pH falls below 6.5 or exceeds 7.5. The water that is pumped out is redirected to water the plants positioned above the aquarium, utilizing its nutrients for plant nourishment.
+
+To ensure the aquarium's water level remains at an appropriate level, the system incorporates a water sensor. If the water level in the aquarium is detected to be insufficient, the system activates the pump to refill the aquarium with water. This water is sourced from the filtered water collected from the plants, providing a continuous cycle of water circulation and conservation.
+
+With the Arduquarium, you can effortlessly maintain a healthy pH balance in your aquarium, while simultaneously promoting the growth of plants and minimizing water waste.
+
 ## Features
 
 - **pH Level Monitoring**: The system incorporates a pH sensor that continuously measures the pH level of the aquarium water. If the pH level falls below 6.5 or rises above 7.5, the system takes corrective action.
