@@ -21,14 +21,14 @@ To set up the Automated Aquarium Water Cycler, follow these steps:
 1. Clone the repository to your local machine.
 2. Connect the Arduino UNO board to your computer.
 3. Install the [PlatformIO Extension](https://platformio.org) to your Visual Studio Code.
-4. Open the cloned folder from Git using the PlatformIO installed to your VS Code.
+4. Open the `src` from the cloned folder from Git using the PlatformIO installed to your VS Code.
 5. Upload the code to your Arduino UNO.
 
 ## Schematic Diagram
 
-![Arduquarium Schematic Diagram](./schematics/arduquarium-schematic-diagram.png)
+The schematic diagram below illustrates the connections and components used in the Automated Aquarium Water Cycler system. The following components are included:
 
-The schematic diagram above illustrates the connections and components used in the Automated Aquarium Water Cycler system. The following components are included:
+![Arduquarium Schematic Diagram](./schematics/arduquarium-schematic-diagram.png)
 
 * **Arduino UNO**: The main control unit responsible for running the system.
 * **PH-4502C**: The high-precision pH sensor for monitoring the pH level of the aquarium water.
